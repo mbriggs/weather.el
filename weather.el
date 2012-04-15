@@ -27,7 +27,7 @@
 (require 'url)
 (require 'url-http)
 
-(defvar weather-city "Санкт Петербург"
+(defvar weather-city "Toronto"
   "City for which you want to know the weather")
 
 (defvar weather-last nil
@@ -57,7 +57,7 @@
         (url-request-method "GET")
         (url-mime-charset-string nil)
         (url-mime-accept-string "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
-        (url-request-extra-headers '(("Accept-Language" . "ru,en;q=0.7,en-US;q=0.3")
+        (url-request-extra-headers '(("Accept-Language" . "en;q=0.7,en-US;q=0.3")
                                      ("Accept-Charset" . "ISO-8859-1,utf-8;q=0.7,*;q=0.7"))))
     (switch-to-buffer (url-retrieve-synchronously weather-url))
     (goto-char (point-min))
@@ -127,7 +127,8 @@
 (defadvice url-http-user-agent-string (after url-http-user-agent-string-advice
                                               ())
   ""
-  (setq ad-return-value "User-Agent: Mozilla/5.0 (X11; U; Linux i686; ru-RU; rv:1.9.1.7) Gecko/20091221 Firefox/3.5.7\r\n"))
+  (setq ad-return-value "User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.7) Gecko/20091221 Firefox/3.5.7\r\n"))
 
 (provide 'weather)
 ;;; weather.el ends here
+
